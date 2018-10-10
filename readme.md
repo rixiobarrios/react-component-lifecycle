@@ -112,7 +112,7 @@ Now that we've reviewed the component life cycle methods, let's dive in to what
 we use them for. There are two common use cases for the life cycle methods, but
 the most common is requesting data from an API.
 
-### We Do [Country List](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
+### We Do: [Country List](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
 
 Clone down [this
 repository](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
@@ -127,18 +127,15 @@ Another common use case for the life cycle methods is integrating third-party
 libraries with React. We'll explore this use-case by creating a timeline using
 [D3](https://d3js.org/), a very popular library for charts and data visualizations.
 
-### We Do [JavaScript Timeline](https://git.generalassemb.ly/dc-wdi-react-redux/react-d3-timeline)
+### We Do: [JavaScript Timeline](https://git.generalassemb.ly/dc-wdi-react-redux/react-d3-timeline)
 
 Clone down [this repository](https://git.generalassemb.ly/dc-wdi-react-redux/react-d3-timeline) with a short exercise and walk through to demo
 how to integrate a third-party library with React.
 
 ## Additional Resources
 
-* [React Docs: The Component
-    Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
-* [React Docs: Commonly Used Lifecycle
-Methods](https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
-
+* [React Docs: The Component Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
+* [React Docs: Commonly Used Lifecycle Methods](https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
 * [Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 ## [License](LICENSE)
