@@ -1,107 +1,100 @@
-# Event Handlers and the Component Lifecycle in React
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-## Learning Objectives
-
-* Understand how to use React's lifecycle methods
-* Retrieve data from an API inside of a component
-* Handle events in React
-* Look at the React documentation to learn more
-
-## Framing (10 min / 0:10)
+# The Component Life Cycle
 
 So far, we've used react components to build simple applications. We've added
 state and props and controlled data flow through them (using just the `render` and
 `setState` methods). In order to do more complex things, we'll have to use
-lifecycle methods.
+life cycle methods.
+
+## Prerequisites
+
+* React
+* Components
+* State and props
+
+## Objectives
+
+By the end of this, developers should be able to:
+
+* Explain how to use React's life cycle methods
+* Retrieve data from an API inside of a component
+* Work with a third-party library inside of a component
+
+## Introduction (10 min / 0:20)
 
 How do we get data from an API? Well we could drop in an AJAX call to fetch some
 data, but our component would likely render before the AJAX request finished.
 Our component would see that our data is `undefined` and either render a
 blank/empty component or throw an error.
 
-How would we animate a component? (i.e. a sidebar that usually lives off the
-page, except for when a hamburger menu is clicked.) We could write some code to
-animate the position of the sidebar, but how could we guarantee it was running
-after our Sidebar component's render method had been called?
+How do we incorporate third party libraries with React? It sounds
+complicated... Do we put that in render? Wont that make our render method long
+and complicated?
 
-This lesson will walk us through the Component Lifecycle: hooks that are fired
-at different stages of a components "life" for solving the problems described
+This lesson will introduce the Component Life Cycle: hooks that are fired at
+different states of a components "life" for solving the problems described
 above, as well as many others.
 
-Throughout the course of this lesson, we'll build out a simple flashcard app
-with vocabulary keywords pulled from the Oxford Dictionary API. Our flashcard
-app will cycle through a set of flashcards, giving us 10 seconds to think of the
-definition before moving on to the next card.
+So, what is the Component Life Cycle?
 
-But first, what is the Component Lifecycle?
+## The Component Life Cycle
 
-## The Component Lifecycle (10 min / 0:20)
+**You Do: Documentation Deep Dive** Read the documentation on [The Component Life
+Cycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle).
+Read the sections title The Component Lifecycle and Reference. Stop when you get
+to the section titled Rarely Used Lifecycle Methods.
 
-Components provide several lifecycle methods that you can use to control your
-application based on the state of the UI.
+> 10 minutes to read / 5 minutes to discuss
 
-When you include these methods in the component they will be invoked
-automatically (because we are extending the `React.Component` class which defines them).
+**Review Questions:**
 
-Lifecycle methods are called at specific points in the rendering process. You
-can use these methods to perform actions based on what's happening in the DOM.
+* What is the component lifecycle? What are the lifecycle methods?
+* What are the commonly used lifecycle methods?
+* What do we use these methods for?
 
-* `componentWillUnmount` is called immediately *before* a component is removed
-  from the DOM.
-* `componentDidMount`, for example, is called immediately *after* a component is
-  rendered to the DOM.
+### The Life Cycle Methods (20 min / 0:40)
 
-What do you use lifecycle methods for?
-
-* Making asynchronous requests (ajax calls)
-* Binding event listeners to components
-* Animating components (once they've rendered)
-* Optimizing for performance (`shouldComponentUpdate`)
-
-Why is it called a lifecycle?
-
-It's an action that repeats in a specific order.
-
-![ ](./images/reactjs_component_lifecycle_functions.png  "React-component-lifecycle")
-
-### At a very high level
+When we create a component by extending `React.Component`, we get a couple of
+lifecycle methods included that we can optionally overwrite to add functionality
+to our components. These methods are invoked at specific periods during the
+"life" of a component, like when it mounts to the DOM or unmounts from the DOM.
+While there are a lot of lifecycle methods, there are only a few that you will
+use regularly.
 
 There are two types of component lifecycle methods:
 
-**Mounting** lifecycle methods. e.g. What happens when the component is
-  created? Was an initial state set? Methods:
+**Mounting** lifecycle methods:
 
-* `constructor()`
-* `componentWillMount()`
-* `render()`
-* `componentDidMount()`
+* **`constructor()`**
+* `getDerivedStateFromProps()`
+* **`render()`**
+* **`componentDidMount()`**
 * `componentWillUnmount()`
 
-**Updating** lifecycle methods. e.g. Has state changed? Methods:
+**Updating** lifecycle methods:
 
-* `componentWillReceiveProps()`
+* `getDerivedStateFromProps()`
 * `shouldComponentUpdate()`
-* `componentWillUpdate()`
-* `render()`
-* `componentDidUpdate()`
+* **`render()`**
+* `getSnapshotBeforeUpdate()`
+* **`componentDidUpdate()`**
 
-The documentation gives good examples of what each method should be used for.
-[Check out the documentation on components!](https://facebook.github.io/react/docs/react-component.html)
+> the **bold** methods are the most commonly used ones and the ones we'll focus
+> on for this lesson
 
-## [We do: Exploring the Lifecycle methods](https://git.generalassemb.ly/dc-wdi-react-redux/component-lifecycle-exercise) (20 min / 0:40)
+Review [this handy cheat
+sheet](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) for
+a visual explanation of these life cycle methods and when they get invoked.
 
-Let's clone down [this repository](https://git.generalassemb.ly/dc-wdi-react-redux/component-lifecycle-exercise)
-with a short exercise for exploring the lifecycle methods.
+## [We do: Exploring the Life Cycle Methods](https://git.generalassemb.ly/dc-wdi-react-redux/component-lifecycle-exercise) (20 min / 1:00)
 
-```sh
-git clone git@git.generalassemb.ly:ga-wdi-exercises/react-component-lifecycle.git
-cd react-component-lifecycle
-npm install
-npm start
-```
+Clone down [this
+repository](https://git.generalassemb.ly/dc-wdi-react-redux/component-lifecycle-exercise)
+with a short exercise for exploring the life cycle methods.
 
 This exercise is a simple, 2 "page" website where each page is a component.
-We'll be adding the component lifecycle methods to each page-component. As we do
+We'll be adding the component life cycle methods to each page-component. As we do
 consider the following questions:
 
 * What order are the methods run in? Before or after rendering?
@@ -111,377 +104,45 @@ consider the following questions:
 > Add the mounting methods to HomePage.js and the update methods to
 > AboutPage.js. `console.log` something in each method to understand the order.
 
-<!-- You can also append values to the parameters by passing in a second input to `.get()`:
+## Break (10 min / 1:10)
 
-```js
-  axios.get('url', {
-    params: {
-      key1: value1,
-      key2: value2
-    }
-  })
-  .then((response) => {
-    console.log(response)
-  })
-  .catch((error) => {
-    console.log(error)
-  })
-```
+## Requesting Data from an API (30 min / 1:40)
 
-Which would result in a GET request to: `url?key1=value1&key2=value2`.
- -->
+Now that we've reviewed the component life cycle methods, let's dive in to what
+we use them for. There are two common use cases for the life cycle methods, but
+the most common is requesting data from an API.
 
-<!-- ### We Do: Axios and AJAX inside a React Component:
-> 15 min / 1:05
+### We Do [Country List](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
 
-We will be using Axios to query the PokéAPI in [this exercise](https://git.generalassemb.ly/ga-wdi-exercises/react-components-axios). -->
+Clone down [this
+repository](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
+with a short exercise to demo how to make AJAX requests using
+`fetch()` inside of a component.
 
-## Break (10 min / 1:00)
+## Break (10 min / 1:50)
 
-## Flashcards (90 min / 2:30)
+## Using Third-party Libraries (30 min / 2:20)
 
-As we dive deeper in to each of the component lifecycle methods and what they're
-used for, we'll work through the following exercise to create a simple
-flashcards app.
+Another common use case for the life cycle methods is integrating third-party
+libraries with React. We'll explore this use-case by creating a timeline using
+[D3](https://d3js.org/), a very popular library for charts and data visualizations.
 
-The starter code for this exercise can be found
-[here](https://git.generalassemb.ly/dc-wdi-react-redux/flashcards).
+### We Do [JavaScript Timeline](https://git.generalassemb.ly/dc-wdi-react-redux/react-d3-timeline)
 
-Let's go ahead and clone the repository:
+Clone down [this repository](https://git.generalassemb.ly/dc-wdi-react-redux/react-d3-timeline) with a short exercise and walk through to demo
+how to integrate a third-party library with React.
 
-```bash
-$ git clone git@git.generalassemb.ly:dc-wdi-react-redux/flashcards.git
-$ npm install
-$ npm start
-```
+## Additional Resources
 
-The app we're going to build will pull vocabulary words from an API and create a flashcard for each word. The app will then cycle through each
-word, giving the user 10 seconds to think of the definition before moving on to
-the next card.
+* [React Docs: The Component
+    Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
+* [React Docs: Commonly Used Lifecycle
+Methods](https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
 
-### We Do: Building out the Flashcard Container
+* [Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-Our component tree and hierarchy have already been defined for us:
+## [License](LICENSE)
 
-* `App`
-  * `Header`
-  * `FlashcardContainer`
-    * `Flashcard`
-      * `Definition`
-
-We'll start by building out the `FlashcardContainer` component - the container
-component for our `Flashcards`.
-
-#### Getting Data from an API
-
-The vocabulary words are coming from an API. We need to query that API for the
-array of vocab words and update the state of our `FlashcardContainer` component
-with our array of vocab words from the API.
-
-To do that we're going to:
-
-1. Add a `constructor` and set the initial state of our component (`this.state`)
-2. Add a `componentDidMount()` method that makes a call to the API and updates
-   state with the array of flashcards
-3. Update `render` to display a flashcard
-
-<details>
-  <summary>Solution</summary>
-
-```js
-// FlashcardContainer.js
-
-class FlashcardContainer extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      flashcards: [],
-      currentIndex: 0
-    }
-  }
-
-  componentDidMount() {
-    fetch(CLIENT_URL)
-      .then(res => res.json())
-      .then((flashcards) => {
-          console.log(flashcards)
-          this.setState({ flashcards })
-        })
-  }
-
-  render() {
-    let detail = this.state.flashcards[this.state.currentIndex]
-    let card;
-
-    if(detail) {
-      card = <Flashcard detail={detail}/>
-    }
-
-    return (
-      <div>
-        {card}
-      </div>
-    )
-  }
-}
-```
-
-</details>
-
-The `componentDidMount` method is called once, immediately after your component is
-rendered to the DOM. If you want to make an AJAX request when your component
-first renders, this is where to do it (not in the `constructor`, or in
-`componentWillMount`). `componentWillMount` shouldn't be used for server requests
-because it may be invoked multiple times before render. Side effects should be
-avoided in the `constructor`, and so server requests shouldn't be made there.
-
-#### Add an event listener to switch between cards
-
-<details>
-    <summary>Solution</summary>
-
-```js
-//FlashcardContainer.js
-
-class FlashcardContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      flashcards: [],
-      currentIndex: 0
-    };
-
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.next = this.next.bind(this);
-  }
-
-  next() {
-    let nextIndex =
-      this.state.currentIndex + 1 !== this.state.flashcards.length
-        ? this.state.currentIndex + 1
-        : this.state.currentIndex;
-
-    this.setState({ currentIndex: nextIndex });
-  }
-
-  prev() {
-    let prevIndex =
-      this.state.currentIndex - 1 < 0 ? 0 : this.state.currentIndex - 1;
-    this.setState({ currentIndex: prevIndex });
-  }
-
-  handleKeyUp(event) {
-    if (event.keyCode === 39) this.next();
-    if (event.keyCode === 37) this.prev();
-  }
-
-  componentDidMount() {
-    window.addEventListener("keyup", this.handleKeyUp);
-
-    fetch(`${CLIENT_URL}/api/words`)
-      .then(res => res.json())
-      .then(data => this.setState({ flashcards: data }))
-      .catch(err => console.log(err));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("keyup", this.handleKeyUp);
-  }
-
-  render() {
-    let flashcard = this.state.flashcards[this.state.currentIndex];
-    return (
-      <div>
-        <main>
-          <div className="container">
-            {flashcard && (
-              <FlashcardDetail card={flashcard} onTimerEnd={this.next} />
-            )}
-          </div>
-        </main>
-      </div>
-    );
-  }
-}
-
-```
-
-</details>
-
-In this example, we have added a constructor that has a few initial state
-properties. We also add an event listener that switches to the next card on
-right arrow press. Finally, we add an API pull to fetch the dynamic data we will
-use for the app.
-
-### You Do: Adding a Timer to the Flashcard
-
-Add a timer to the Flashcard Detail component.
-
-* Initialize the timer to have 10 seconds on it
-* Every second the same flashcard is still on the board, remove a second from it
-> **hint**: use `window.setTimeout()`)
-* When the timer reaches zero, switch to the next card
-> **hint**: where did you define the `next()` method? How can you access it from `Flashcard.js`?
-* When the `Flashcard` component receives a new card, restart the timer
-
-> **hint**: use `componentWillReceiveProps`
-
-#### We Do: Adding the Definition Component
-
-Now that we have our flashcard displayed, lets add their definitions as well.
-
-For this, we will use a pure functional component -- or a component created by a
-function instead of a class -- and then change its style dynamically based on
-its index.
-
-<details>
-    <summary>Solution</summary>
-
-```js
-//Definition.js
-
-import React from 'react';
-
-let Definition = (props) => {
-
-	return (
-		<div className="">
-			<p>{props.def}</p>
-		</div>
-	)
-}
-
-export default Definition;
-```
-
-```js
-// Flashcard.js
-...
-class Flashcard extends Component {
-  render() {
-    let defs = this.props.detail.definitions[0].definitions 
-
-    return (
-      <div class="card">
-        <p>{this.props.detail.word}</p>
-        { defs.map(def => <Definition def={def} /> )}
-      </div>
-    )
-  }
-}
-...
-```
-
-</details>
-
-## You Do: Show or Hide the Definition
-
-Add a button that, when clicked, toggles whether or not the definition card is
-displayed on the page.
-
-## React Documentation
-
-* What is an uncontrolled component in React? Why would we use it instead of a
-  controlled one?
-* Describe 1-way and 2-way data binding. Which model does React use? Explain and
-  compare to other popular front-end frameworks.
-* Describe how to best gather information from a form in React. Be prepared to
-  show code!
-* Compare and contrast stateful, stateless, and functional components in React.
-  List the pros and cons of each. When would we use one over the other?
-
-## Closing
-
-You will most commonly be using the component lifecycle methods for interacting
-with back-end APIs, though that is not all they're good for!
-
-## Additional Material
-
-### Binding
-
-In React, when we use event methods, we usually have to bind the `this` keyword
-to the method so that it works properly. Class methods are not bound by default,
-so `this` is undefined unless we specify otherwise. We could bind `this` to the
-event each time we call it; however, it is usually more efficient to do so by
-default in the constructor...
-
-```js
-constructor (props) {
-  super(props)
-  this.handleClick = this.handleClick.bind(this)
-}
-```
-
-Then when we add the event handler, we can just do so just like this:
-
-```js
-<button onClick={this.handleClick}/>
-```
-
-This is not a React specific behavior, it applies to JavaScript classes in
-general.
-
-## Event Handlers
-
-Throughout the last few classes, you've seen a couple event handlers. These look
-similar to including them inline in HTML.
-
-In the React Intro class, we went over how we are not actually interacting
-directly with the DOM when we write React code, rather, we are interacting with
-the virtualDOM. Because of this, when we call an event listener, we use
-`SyntheticEvent`'s instead of the usual event objects we are used to dealing
-with in JQuery events. We still get all of the same properties attached to them,
-and some additional ones. Because of this, the traditional documentation on
-event handlers is sometimes not accurate. Instead, use the React event handling
-documentation found [here](https://facebook.github.io/react/docs/events.html).
-Spend a few minutes looking at the different events on listed here.
-
-### An Aside: Axios (10 min / 0:50)
-
-For our first example of working with the component lifecycle methods, we'll be
-retrieving data from an API using AJAX. AJAX calls are asynchronous, so we have
-to be mindful of how long our request will take and when our components will
-render.
-
-We're going to use a module named `axios` to make our calls. Axios is a node
-module commonly used with React to send HTTP requests to an API. It functions
-much like jQuery's Ajax method, or window.Fetch(). Some benefits to using Axios:
-
-* It is a promise-based library with an interface for simpler and cleaner syntax
-  (compared to native XHR especially).
-* It is lightweight and focused solely on handling HTTP requests (as opposed to
-  jQuery which brings in an extensive set of new functions and methods)
-* It is very configurable and has a number of useful methods for doing more
-  complex requests from one or multiple API endpoints
-* It handles a lot of the http header manual work for you (e.g. send a json
-  file, it sets `Content-Type: application/json`)
-
-Read more at the [Axios Documentation](https://github.com/mzabriskie/axios)
-
-> Note: Axios is just one of many Javascript libraries that we could use for
-> handling requests. One of the big selling points of javascript is the ability
-> to mix and match technologies according to preference. Other commonly-used
-> tools for handling requests are fetch and jQuery.
-
-To load in the Axios module:
-
-```js
-// If you are using Babel to compile your code
-import axios from 'axios'
-
-// In standard vanilla Javascript
-let axios = require('axios')
-```
-
-To use Axios to query an API at a given url endpoint:
-
-```js
-axios.get('url')
-  .then((response) => {
-    console.log(response)
-  })
-  .catch((error) => {
-    console.log(error)
-  })
-```
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
