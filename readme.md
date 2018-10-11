@@ -136,6 +136,7 @@ how to integrate a third-party library with React.
 
 * [React Docs: The Component Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
 * [React Docs: Commonly Used Lifecycle Methods](https://reactjs.org/docs/react-component.html#commonly-used-lifecycle-methods)
+* [React Docs: Working with Other Libraries](https://reactjs.org/docs/integrating-with-other-libraries.html)
 * [Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 ## [License](LICENSE)
