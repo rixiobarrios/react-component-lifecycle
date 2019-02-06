@@ -18,7 +18,7 @@ life cycle methods.
 By the end of this, developers should be able to:
 
 - Explain how to use React's life cycle methods
-- Using asynchronous functions within react
+- Use asynchronous functions within react
 - Retrieve data from an API inside of a component
 
 ## Introduction (10 min / 0:20)
