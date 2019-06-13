@@ -99,12 +99,6 @@ do consider the following questions:
 > Add the mounting methods to HomePage.js and the update methods to
 > AboutPage.js. `console.log` something in each method to understand the order.
 
-#### Review Questions
-
-- What is the component lifecycle? What are the lifecycle methods?
-- What are the commonly used lifecycle methods?
-- What do we use these methods for?
-
 ## Break (10 min / 1:10)
 
 ## Requesting Data from an API (60 min / 2:10)
@@ -119,6 +113,12 @@ Clone down
 [this repository](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
 which has some exercises on how to make AJAX requests using `fetch()` inside of
 a component.
+
+## Review Questions
+
+- What is the component lifecycle? What are the lifecycle methods?
+- What are the commonly used lifecycle methods?
+- What do we use these methods for?
 
 ## Additional Resources
 
