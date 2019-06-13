@@ -46,12 +46,6 @@ to the section titled Rarely Used Lifecycle Methods.
 
 > 10 minutes to read / 5 minutes to discuss
 
-**Review Questions:**
-
-- What is the component lifecycle? What are the lifecycle methods?
-- What are the commonly used lifecycle methods?
-- What do we use these methods for?
-
 ### The Life Cycle Methods (20 min / 0:40)
 
 When we create a react component we get a couple of lifecycle methods included
@@ -104,6 +98,12 @@ do consider the following questions:
 
 > Add the mounting methods to HomePage.js and the update methods to
 > AboutPage.js. `console.log` something in each method to understand the order.
+
+#### Review Questions
+
+- What is the component lifecycle? What are the lifecycle methods?
+- What are the commonly used lifecycle methods?
+- What do we use these methods for?
 
 ## Break (10 min / 1:10)
 
