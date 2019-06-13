@@ -28,8 +28,8 @@ data, but our component would likely render before the AJAX request finished.
 Our component would see that our data is `undefined` and either render a
 blank/empty component or throw an error.
 
-How do we incorporate third party libraries like `fetch` or `axios` with React? It sounds
-complicated... Do we put that in render?
+How do we incorporate third party libraries like `fetch` or `axios` with React?
+It sounds complicated... Do we put that in render?
 
 This lesson will introduce the Component Life Cycle: hooks that are fired at
 different states of a components "life" for solving the problems described
@@ -60,23 +60,26 @@ invoked at specific periods during the "life" of a component, like when it
 mounts to the DOM or unmounts from the DOM. While there are a lot of lifecycle
 methods, there are only a few that you will use regularly.
 
-There are two types of component lifecycle methods:
+There are three types of component lifecycle methods:
 
-**Mounting** lifecycle methods:
+**Mounting:** called when a component is created and inserted into the DOM.
 
 - **`constructor()`**
 - `getDerivedStateFromProps()`
 - **`render()`**
 - **`componentDidMount()`**
-- `componentWillUnmount()` (deprecated, don't use it!)
 
-**Updating** lifecycle methods:
+**Updating:** usually triggered by changes in props or state.
 
 - `getDerivedStateFromProps()`
 - `shouldComponentUpdate()`
 - **`render()`**
 - `getSnapshotBeforeUpdate()`
 - **`componentDidUpdate()`**
+
+**Unmounting:** called when a component is being removed from the DOM.
+
+- `componentWillUnmount()`
 
 > the **bold** methods are the most commonly used ones and the ones we'll focus
 > on for this lesson
@@ -116,7 +119,6 @@ Clone down
 [this repository](https://git.generalassemb.ly/dc-wdi-react-redux/react-country-list)
 which has some exercises on how to make AJAX requests using `fetch()` inside of
 a component.
-
 
 ## Additional Resources
 
