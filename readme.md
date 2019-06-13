@@ -79,7 +79,7 @@ There are three types of component lifecycle methods:
 
 **Unmounting:** called when a component is being removed from the DOM.
 
-- `componentWillUnmount()`
+- **`componentWillUnmount()`**
 
 > the **bold** methods are the most commonly used ones and the ones we'll focus
 > on for this lesson
