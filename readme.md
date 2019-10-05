@@ -28,7 +28,7 @@ data, but our component would likely render before the AJAX request finished.
 Our component would see that our data is `undefined` and either render a
 blank/empty component or throw an error.
 
-How do we incorporate third party libraries like `fetch` or `axios` with React?
+How do we incorporate third party libraries like `axios` with React?
 It sounds complicated... Do we put that in render?
 
 This lesson will introduce the Component Life Cycle: hooks that are fired at
