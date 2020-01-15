@@ -9,7 +9,7 @@ instantiated.
 In a class constructor, you must call `super` before you do anything else. So a
 React component constructor in its most basic form looks like this:
 
-```javascript
+```js
 constructor(props) {
   super(props)
 }
@@ -20,7 +20,7 @@ happens automatically when your component is invoked. A common use of the
 constructor is to initialize state using the props passed to the component - as
 we have been doing!
 
-```javascript
+```js
 constructor(props) {
   super(props)
 
@@ -60,7 +60,7 @@ Overflow](http://stackoverflow.com/questions/41612200/in-react-js-should-i-make-
 from a member of the React team at Facebook gives more detail.
 
 Another common use for `componentDidMount` is to bind event listeners to your
-component. You can then remove the event listeners in `componentWillUnmount`.
+component. You need to remove the event listeners in `componentWillUnmount` in order to avoid memory leaks.
 For example, you could bind and unbind an event listener for a drag-drop
 component.
 
@@ -71,13 +71,9 @@ render, you return JSX using the component's props and state. You should never
 set state in render - render should only react to changes in state or props, not
 create those changes.
 
-## `componentWillReceiveProps(newProps)`
+## `static getDerivedStateFromProps(props, state)`
 
-This method is called any time your component receives new props. It is _not_
-called with the initial props when your component initially mounts. If you need
-to change the state of your component based on changes in the props, this is
-where you do it. In a simple app, you generally won't need
-`componentWillReceiveProps`.
+This method is invoked right before calling the render method, both on the initial mount and on subsequent updates. If used, it should return an object to update the state, or null to update nothing.  This method exists for **rare use cases** where the state depends on changes in props over time.  In almost all cases, you should use `componentDidUpdate` instead.
 
 ## `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`
 
