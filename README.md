@@ -23,17 +23,8 @@ By the end of this, developers should be able to:
 
 ## Introduction (10 min / 0:20)
 
-How do we get data from an API? Well we could drop in an AJAX call to fetch some
-data, but our component would likely render before the AJAX request finished.
-Our component would see that our data is `undefined` and either render a
-blank/empty component or throw an error.
-
-How do we incorporate third party libraries like `axios` with React?
-It sounds complicated... Do we put that in render?
-
 This lesson will introduce the Component Life Cycle: hooks that are fired at
-different states of a components "life" for solving the problems described
-above, as well as many others.
+different states of a components "life" for solving challenges such as getting data from an API to use in our components.
 
 So, what is the Component Life Cycle?
 
@@ -84,8 +75,8 @@ for a visual explanation of these life cycle methods and when they get invoked.
 
 ## We do: Exploring the Life Cycle Methods (20 min / 1:00)
 
-Clone down
-[this repository](https://git.generalassemb.ly/seir-129/component-lifecycle-exercise)
+Fork and clone this
+[repository](https://git.generalassemb.ly/seir-129/component-lifecycle-exercise)
 with a short exercise for exploring the life cycle methods.
 
 This exercise is a simple, 2 "page" website where each page is a component.
@@ -96,8 +87,8 @@ do consider the following questions:
 - How many times is the method invoked?
 - What causes the method to be (re)invoked?
 
-> Add the mounting methods to HomePage.js and the update methods to
-> AboutPage.js. `console.log` something in each method to understand the order.
+> Add the mounting methods to Home.js and the update methods to
+> Counter.js. Then, `console.log` the component name and the lifecycle name in each method to observe the order in real time as you click through the different pages and use the counter.
 
 ## Break (10 min / 1:10)
 
@@ -109,8 +100,8 @@ the most common is requesting data from an API.
 
 ### We Do: [Country List](https://git.generalassemb.ly/seir-129/react-country-list)
 
-Clone down
-[this repository](https://git.generalassemb.ly/seir-129/react-country-list)
+Fork and clone this
+[repository](https://git.generalassemb.ly/seir-129/react-country-list)
 which has some exercises on how to make AJAX requests using `fetch()` inside of
 a component.
 
